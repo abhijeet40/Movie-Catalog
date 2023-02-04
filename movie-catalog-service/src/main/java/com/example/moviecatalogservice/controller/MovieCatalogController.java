@@ -27,10 +27,10 @@ public class MovieCatalogController {
 
 
 
-        UserRating ratings = restTemplate.getForObject("http://localhost:8083/ratingsdata/users/"+userId, UserRating.class);
+        UserRating ratings = restTemplate.getForObject("http://movie-rating-service/ratingsdata/users/"+userId, UserRating.class);
 
         return  ratings.getUserRating().stream().map( rating -> {
-            Movie movie = restTemplate.getForObject("http://localhost:8082/movies/" + rating.getMovieId(), Movie.class);
+            Movie movie = restTemplate.getForObject("http://movie-view-service/movies/" + rating.getMovieId(), Movie.class);
             return new CatalogItem(movie.getName(),"desc", rating.getRating());
         }).collect(Collectors.toList());
 //        return Collections.singletonList(
