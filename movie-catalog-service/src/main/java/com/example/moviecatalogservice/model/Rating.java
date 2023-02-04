@@ -1,6 +1,9 @@
 package com.example.moviecatalogservice.model;
 
 public class Rating {
+    public Rating() {
+    }
+
     public String movieId;
     public Integer rating;
 
